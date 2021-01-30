@@ -14,7 +14,14 @@ export default function (
       scrollDirection,
       distanceScrolled,
     }
-    // We're at the top and not fixed yet.
+  // We're pinned
+  } else if (props.pin) {
+    return {
+      action: state.state !== 'pinned' ? 'pin' : 'none',
+      scrollDirection,
+      distanceScrolled,
+    }
+  // We're at the top and not fixed yet.
   } else if (currentScrollY <= props.pinStart && state.state !== 'unfixed') {
     return {
       action: 'unfix',
